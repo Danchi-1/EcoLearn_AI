@@ -1,10 +1,4 @@
 flask
 werkzeug
 itsdangerous
-sqlite3
-secrets
-datetime
-pathlib
-json
-typing
-logging
+gunicorn
