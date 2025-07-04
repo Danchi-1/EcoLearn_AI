@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLearn AI - Climate Action Through Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">   
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="eco-loader">
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+        </div>
+        <h2 class="loading-text">Loading EcoLearn AI...</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLearn AI</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#simulations" class="nav-link">Simulations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="dashboard-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-auth">
+                <button class="btn btn-outline" id="login-btn">Login</button>
+                <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                <div id="user-logout" style="display: none;">
+                    <button class="btn btn-outline" id="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero space-up-sp">
+        <div class="hero-bg">
+            <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">
+                    <span class="gradient-text">Climate Action:</span>
+                    <br>Through Interactive Learning
+                </h2>
+                <p class="hero-subtitle">
+                    Master renewable energy, sustainability, and climate solutions through AI-powered simulations and gamified experiences.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" id="start-learning">
+                        <i class="fas fa-play"></i>
+                        Start Learning
+                    </button>
+                    <button class="btn btn-secondary btn-large space-up" id="watch-demo">
+                        <i class="fas fa-video"></i>
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="eco-sphere">
+                    <div class="sphere-inner">
+                        <div class="orbit orbit-1">
+                            <div class="planet solar">☀️</div>
+                        </div>
+                        <div class="orbit orbit-2">
+                            <div class="planet wind">💨</div>
+                        </div>
+                        <div class="orbit orbit-3">
+                            <div class="planet hydro">💧</div>
+                        </div>
+                        <div class="earth-core">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Revolutionary Learning Experience</h2>
+                <p class="section-subtitle">Powered by AI, designed for impact</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Personalization</h3>
+                    <p>Adaptive learning paths tailored to your pace, interests, and goals using advanced AI algorithms.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gamified Simulations</h3>
+                    <p>Design solar schools, manage eco-villages, and solve real-world environmental challenges through interactive gameplay.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-Time Impact Tracking</h3>
+                    <p>Monitor your carbon footprint reduction, energy savings, and environmental impact with detailed analytics.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaborative Learning</h3>
+                    <p>Join global communities, work on group projects, and share achievements with fellow eco-learners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulations Section -->
+    <section id="simulations" class="simulations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Interactive Simulations</h2>
+                <p class="section-subtitle">Learn by doing, not just reading</p>
+            </div>
+            <div class="simulations-showcase">
+                <div class="simulation-tabs">
+                    <button class="tab-btn active" data-tab="solar">Solar School</button>
+                    <button class="tab-btn" data-tab="village">Eco Village</button>
+                    <button class="tab-btn" data-tab="carbon">Carbon Tracker</button>
+                </div>
+                <div class="simulation-content">
+                    <div class="sim-panel active" id="solar">
+                        <div class="sim-visual">
+                            <div class="solar-school">
+                                <div class="building">
+                                    <div class="solar-panels">
+                                        <div class="panel"></div>
+                                        <div class="panel"></div>
+                                        <div class="panel"></div>
+                                        <div class="panel"></div>
+                                    </div>
+                                    <div class="energy-flow">
+                                        <div class="energy-particle"></div>
+                                        <div class="energy-particle"></div>
+                                        <div class="energy-particle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sim-info">
+                            <h3>Design Your Solar-Powered School</h3>
+                            <p>Calculate energy needs, choose optimal panel placement, and manage budget constraints while powering an entire educational facility.</p>
+                            <ul class="sim-features">
+                                <li><i class="fas fa-check"></i> Real-time energy calculations</li>
+                                <li><i class="fas fa-check"></i> Budget optimization</li>
+                                <li><i class="fas fa-check"></i> Weather impact simulation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sim-panel" id="village">
+                        <div class="sim-visual">
+                            <div class="eco-village">
+                                <div class="house">
+                                    <div class="wind-turbine"></div>
+                                </div>
+                                <div class="garden">
+                                    <div class="tree"></div>
+                                    <div class="tree"></div>
+                                </div>
+                                <div class="water-system">
+                                    <div class="water-drop"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sim-info">
+                            <h3>Manage Your Eco Village</h3>
+                            <p>Balance energy production, waste management, and community needs while maintaining sustainability and happiness.</p>
+                            <ul class="sim-features">
+                                <li><i class="fas fa-check"></i> Resource management</li>
+                                <li><i class="fas fa-check"></i> Community satisfaction</li>
+                                <li><i class="fas fa-check"></i> Sustainability metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sim-panel" id="carbon">
+                        <div class="sim-visual">
+                            <div class="carbon-tracker">
+                                <div class="activity-icons">
+                                    <div class="activity transport">
+                                        <i class="fas fa-car"></i>
+                                    </div>
+                                    <div class="activity energy">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="activity food">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                </div>
+                                <div class="carbon-visualization">
+                                    <div class="carbon-bar">
+                                        <div class="carbon-level"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sim-info">
+                            <h3>Track Your Carbon Footprint</h3>
+                            <p>Monitor daily activities, discover reduction opportunities, and compete with friends to minimize your environmental impact.</p>
+                            <ul class="sim-features">
+                                <li><i class="fas fa-check"></i> Personal impact tracking</li>
+                                <li><i class="fas fa-check"></i> Reduction recommendations</li>
+                                <li><i class="fas fa-check"></i> Social challenges</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section id="dashboard" class="dashboard-preview">
+        <div class="container">
+            <div class="dashboard-content">
+                <div class="dashboard-info">
+                    <h2>Your Learning Dashboard</h2>
+                    <p>Track progress, earn badges, and see your real-world impact</p>
+                    <div class="dashboard-stats">
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>CO₂ Saved</h3>
+                                <p class="stat-value">Some tons</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Badges Earned</h3>
+                                <p class="stat-value">Some number</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Global Rank</h3>
+                                <p class="stat-value">#number</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-visual">
+                    <div class="dashboard-mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-nav">
+                                <span class="nav-dot"></span>
+                                <span class="nav-dot"></span>
+                                <span class="nav-dot"></span>
+                            </div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="progress-ring">
+                                <svg class="progress-svg" viewBox="0 0 100 100">
+                                    <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="progress-fill" cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <div class="progress-text">
+                                    <span class="progress-percentage">Some%</span>
+                                    <span class="progress-label">Complete</span>
+                                </div>
+                            </div>
+                            <div class="achievement-badges">
+                                <div class="badge earned">
+                                    <i class="fas fa-solar-panel"></i>
+                                </div>
+                                <div class="badge earned">
+                                    <i class="fas fa-recycle"></i>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Only show this section if the user is logged in -->
+    <section id="dashboard" class="dashboard-preview" style="display: none;">
+        ...
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Join the Climate Action Movement</h2>
+                    <p>Ready to make a difference? Get started with EcoLearn AI today.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@ecolearn.ai</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <span>+234 XXX XXX XXXX</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lagos, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="role" required>
+                                <option value="">Select Role</option>
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">School Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full space-down">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-leaf"></i>
+                        <span>EcoLearn AI</span>
+                    </div>
+                    <p>Empowering the next generation of climate leaders through interactive AI-powered education.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#">Simulations</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Leaderboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoLearn AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome Back</h3>
+                <span class="close" data-modal="login-modal">&times;</span>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+            <p class="modal-switch">Don't have an account? <a href="#" id="switch-to-signup">Sign up</a></p>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join EcoLearn AI</h3>
+                <span class="close" data-modal="signup-modal">&times;</span>
+            </div>
+            <form id="signup-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <select name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="admin">School Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+            <p class="modal-switch">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+        </div>
+    </div>
+
+    <script src="/js/main.js" defer></script>
+</body>
+</html>

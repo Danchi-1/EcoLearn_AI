@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoLearn Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="eco-loader">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <h2 class="loading-text">Loading Dashboard...</h2>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-leaf"></i>
+        <span>EcoLearn AI</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a class="nav-link" href="/">Home</a></li>
+        <li><a class="nav-link" href="/">Features</a></li>
+        <li><a class="nav-link" href="/">Simulations</a></li>
+        <li><a class="nav-link active" href="/dashboard">Dashboard</a></li>
+        <li><a class="nav-link" href="/">Contact</a></li>
+      </ul>
+      <div class="nav-auth">
+        <button class="btn btn-outline" id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Section -->
+  <main class="dashboard-wrapper space-up-sp" style="display: none;" id="dashboard-content">
+    <section class="dashboard-main">
+      <div class="dashboard-card">
+        <h2>Welcome, <span id="user-name">User</span>!</h2>
+        <p>This is your personalized learning dashboard.</p>
+        <p><strong>Email:</strong> <span id="user-email"></span></p>
+        <p><strong>Role:</strong> <span id="user-role"></span></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-leaf"></i>
+            <span>EcoLearn AI</span>
+          </div>
+          <p>Empowering the next generation of climate leaders through interactive AI-powered education.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#">Simulations</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Leaderboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 EcoLearn AI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const userEmail = localStorage.getItem('ecoUser');
+      if (!userEmail) {
+        window.location.href = '/login';
+        return;
+      }
+
+      fetch(`/api/user/${userEmail}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            alert('User not found');
+            localStorage.removeItem('ecoUser');
+            window.location.href = '/login';
+          } else {
+            document.getElementById('user-name').textContent = data.name;
+            document.getElementById('user-email').textContent = data.email;
+            document.getElementById('user-role').textContent = data.role;
+          }
+        })
+        .catch(() => {
+          alert('Error fetching user data.');
+          localStorage.removeItem('ecoUser');
+          window.location.href = '/login';
+        });
+
+      document.getElementById('logout-btn')?.addEventListener('click', () => {
+        localStorage.removeItem('ecoUser');
+        window.location.href = '/login';
+      });
+
+      window.addEventListener('load', () => {
+        document.getElementById('loading-screen').classList.add('hidden');
+        document.getElementById('dashboard-content').style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+
+</html>

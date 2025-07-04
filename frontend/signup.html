@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--light-color);
+    }
+
+    .auth-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .auth-card h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--dark-color);
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .auth-footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <h2>Sign Up</h2>
+      <form id="signupForm" autocomplete="off">
+        <div class="form-group">
+          <label for="signup-name">Name</label>
+          <input id="signup-name" name="name" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" name="email" type="email" required />
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" name="password" type="password" required minlength="6" />
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input id="signup-confirm-password" name="confirm_password" type="password" required minlength="6" />
+        </div>
+        <div class="form-group">
+          <label for="signup-role">Role</label>
+          <select id="signup-role" name="role" required>
+            <option value="">Select Role</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+            <option value="admin">School Admin</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+        <div id="signup-error" class="error-message"></div>
+      </form>
+      <div class="auth-footer">
+        <span>Already have an account?</span> <a href="/login">Login</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const confirm = document.getElementById('signup-confirm-password').value;
+      const role = document.getElementById('signup-role').value;
+      const errorBox = document.getElementById('signup-error');
+
+      if (password !== confirm) {
+        errorBox.textContent = "Passwords do not match.";
+        return;
+      }
+
+      const res = await fetch('/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password, role })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem('ecoUser', email);
+        window.location.href = '/dashboard';
+      } else {
+        errorBox.textContent = data.error || "Signup failed.";
+      }
+    });
+  </script>
+</body>
+</html>
