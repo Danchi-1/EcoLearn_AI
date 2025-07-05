@@ -5,6 +5,7 @@ import sqlite3
 import secrets
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_cors import CORS
 
 # Make sure this runs once at startup
 def initialize_token_table():
@@ -23,6 +24,7 @@ def initialize_token_table():
 initialize_token_table()
 
 app = Flask(__name__)
+CORS(app) # Enable CORS for all routes  
 
 # Serve index.html from frontend folder
 @app.route('/')
