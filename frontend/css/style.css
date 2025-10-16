@@ -63,6 +63,10 @@ body {
     visibility: hidden;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .eco-loader {
     position: relative;
     width: 80px;
@@ -77,6 +81,10 @@ body {
     background: var(--gradient-primary);
     border-radius: 50% 0;
     animation: leafSpin 1.5s linear infinite;
+}
+
+.hover:hover {
+    cursor: pointer;
 }
 
 .leaf:nth-child(1) {
@@ -266,6 +274,7 @@ body {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .btn:hover::before {

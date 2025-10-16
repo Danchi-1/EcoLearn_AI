@@ -29,9 +29,8 @@
         <span>EcoLearn AI</span>
       </div>
       <ul class="nav-menu">
-        <li><a class="nav-link" href="/">Home</a></li>
         <li><a class="nav-link" href="/">Features</a></li>
-        <li><a class="nav-link" href="/">Simulations</a></li>
+        <li><a class="nav-link" href="/simulation">Simulations</a></li>
         <li><a class="nav-link active" href="/dashboard">Dashboard</a></li>
         <li><a class="nav-link" href="/">Contact</a></li>
       </ul>
@@ -47,7 +46,6 @@
       <div class="dashboard-card">
         <h2>Welcome, <span id="user-name">User</span>!</h2>
         <p>This is your personalized learning dashboard.</p>
-        <p><strong>Email:</strong> <span id="user-email"></span></p>
         <p><strong>Role:</strong> <span id="user-role"></span></p>
       </div>
     </section>
@@ -115,7 +113,6 @@
             window.location.href = '/login';
           } else {
             document.getElementById('user-name').textContent = data.name;
-            document.getElementById('user-email').textContent = data.email;
             document.getElementById('user-role').textContent = data.role;
           }
         })

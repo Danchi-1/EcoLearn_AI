@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory
 from flask import Flask, request, jsonify
 from user_system.auth import register_user, validate_user, get_user_by_email
+from ai_module.analytics import LearningAnalytics
 import sqlite3
 import secrets
 from datetime import datetime, timedelta
@@ -55,7 +56,7 @@ def signup():
     name = data.get('name')
     email = data.get('email')
     password = data.get('password')
-    role = data.get('role', 'student')
+    role = data.get('role')
 
     success = register_user(name, email, password, role)
     if success:

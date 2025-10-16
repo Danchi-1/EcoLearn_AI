@@ -16,12 +16,13 @@ def register_user(name, email, password, role):
             VALUES (?, ?, ?, ?)
         ''', (name, email, hashed_pw, role))
         conn.commit()
+        print("Inserting user:", name, email, role)
         return True
     except sqlite3.IntegrityError:
+        print("User with this email already exist")
         return False  # email already exists
     finally:
         conn.close()
-        print("Inserting user:", name, email, role)
 
 def validate_user(email, password):
     conn = sqlite3.connect(db_path)

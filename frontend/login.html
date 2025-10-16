@@ -6,6 +6,18 @@
   <title>Login - EcoLearn</title>
   <link rel="stylesheet" href="/css/style.css" />
   <style>
+    a {
+      text-decoration: none;
+    }
+
+    .backArrow {
+      font-size: 3rem;
+      color: green;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
     .auth-wrapper {
       min-height: 100vh;
       display: flex;
@@ -101,6 +113,7 @@
   <div class="auth-wrapper">
     <div class="auth-card">
       <h2>Login</h2>
+      <a href="/" class="backArrow">&lArr;</a>
       <form id="loginForm">
         <div class="form-group">
           <label for="login-email">Email</label>

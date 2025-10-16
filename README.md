@@ -1,60 +1,60 @@
-# 🌿 EcoLearn AI
+# EcoLearn AI
 
 **EcoLearn AI** is an interactive climate education platform that empowers users to learn about renewable energy, sustainability, and environmental impact through gamified simulations and AI-powered dashboards.
 
 ---
 
-## 🚀 Features
+## Features
 
-### ✅ Completed Features
+### Completed Features
 
-- 🔐 **User Authentication**:
+- **User Authentication**:
   - Sign up, login, and logout with secure password hashing.
   - Confirm password matching on signup.
   - Role-based registration (student, teacher, admin).
 
-- 🧠 **AI-Styled Learning Dashboard**:
+- **AI-Styled Learning Dashboard**:
   - Personalized dashboard that fetches user data (name, email, role).
   - Dashboard accessible only after login (protected route).
 
-- 🎨 **Modern Frontend UI**:
+- **Modern Frontend UI**:
   - Clean, responsive design using CSS custom properties.
   - Loading screen with animated spinning leaves.
   - Orbiting earth + floating planet animation.
   - Animated particles on landing page.
 
-- 📬 **Password Reset Flow**:
+- **Password Reset Flow**:
   - Forgot password form triggers secure token-based reset link.
   - Password can be securely updated via `/reset-password?token=...`.
 
-- 🧭 **Conditional Navigation**:
+- **Conditional Navigation**:
   - Dashboard link adapts based on authentication status.
   - Login and Signup buttons hide after user logs in.
 
 ---
 
-## 🧩 Planned Features
+## Planned Features
 
-- 📊 Track Learning Progress:
+- Track Learning Progress:
   - Progress ring, badges, carbon savings, and leaderboards.
 
-- 🤝 Community Features:
+- Community Features:
   - Peer challenges, shared simulations, and eco-actions.
 
-- 🤖 AI Integration:
+- AI Integration:
   - Smart simulation recommendation engine.
   - Carbon footprint estimators using ML.
 
-- 📈 Admin & Analytics Dashboard:
+- Admin & Analytics Dashboard:
   - Role-based access to deeper stats (for teachers, admins).
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
-| Layer         | Tech Stack                         |
+| Layer         | Tech Stack                        |
 |--------------|------------------------------------|
-| Frontend     | HTML, CSS (with custom variables), Vanilla JS |
+| Frontend     | HTML, CSS (with custom variables)  |
 | Backend      | Flask (Python)                     |
 | Database     | SQLite3                            |
 | Security     | Werkzeug password hashing, tokens  |
@@ -62,9 +62,9 @@
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
-EcoMind-AI/
+EcoLearn-AI/
 │
 ├── main.py                          # App entry point
 │
@@ -149,7 +149,7 @@ EcoMind-AI/
 
 ---
 
-## 🔐 Security Notes
+## Security Notes
 
 - Passwords are hashed using `werkzeug.security`'s `generate_password_hash`.
 - Password reset links are token-based and expire after 1 hour.
@@ -157,12 +157,12 @@ EcoMind-AI/
 
 ---
 
-## 📦 Setup Instructions
+## Setup Instructions
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/ecolearn-ai.git
+   git clone https://github.com/Danchi-1/ecolearn-ai.git
    cd ecolearn-ai
 Create a virtual environment:
 
@@ -184,7 +184,7 @@ Run the Flask app:
     Open in browser:
     Navigate to: http://127.0.0.1:5000
 
-📩 Feedback & Contributions
+Feedback & Contributions
 
 This project is in active development. Suggestions and contributions are welcome!
 
@@ -195,18 +195,3 @@ To contribute:
     Create a branch
 
     Submit a pull request
-
-📜 License
-
-MIT License © 2025 EcoLearn AI Team
-
-
----
-
-Would you like me to:
-
-- Save this as a `README.md` file for you?
-- Generate a `requirements.txt`?
-- Add screenshots or a logo?
-
-Let me know so we can polish your project completely!
