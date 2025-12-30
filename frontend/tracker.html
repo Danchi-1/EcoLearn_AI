@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLearn Carbon Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .tracker-container {
+            max-width: 1000px;
+            margin: 100px auto 40px;
+            /* Clear navbar */
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .tracker-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tracker-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #27ae60;
+        }
+
+        .ai-feedback {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-pie"></i>
+                <span>Carbon Tracker</span>
+            </div>
+            <a href="/dashboard" class="btn btn-outline" style="margin-left: auto;">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="tracker-container">
+        <!-- Input Section -->
+        <div class="tracker-card">
+            <h2><i class="fas fa-edit"></i> Daily Log</h2>
+            <p style="color: #666; margin-bottom: 20px;">Track your habits to see your impact.</p>
+
+            <form id="tracker-form">
+                <div class="form-group">
+                    <label><i class="fas fa-car"></i> Transport (km driven)</label>
+                    <input type="number" id="transport" class="form-control" placeholder="e.g. 15" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-utensils"></i> Meat Consumption (servings)</label>
+                    <input type="number" id="meat" class="form-control" placeholder="e.g. 2" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-bolt"></i> Electricity Usage (hours screens ON)</label>
+                    <input type="number" id="energy" class="form-control" placeholder="e.g. 8" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-recycle"></i> Waste Recycled (approx kg)</label>
+                    <input type="number" id="recycling" class="form-control" placeholder="e.g. 1">
+                </div>
+
+                <button type="submit" class="btn-submit">Calculate Impact</button>
+            </form>
+
+            <div id="ai-feedback" class="ai-feedback">
+                <h4><i class="fas fa-robot"></i> AI Analysis</h4>
+                <p id="ai-text">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Vis Section -->
+        <div class="tracker-card">
+            <h2><i class="fas fa-globe-americas"></i> Your Footprint</h2>
+            <div style="height: 300px; position: relative;">
+                <canvas id="impactChart"></canvas>
+            </div>
+
+            <hr style="margin: 20px 0;">
+
+            <div style="text-align: center;">
+                <h3>Total CO2 Today: <span id="total-co2" style="color: #e74c3c;">0</span> kg</h3>
+                <p style="font-size: 14px; color: #777;">Target: 10 kg/day</p>
+            </div>
+
+            <div id="status-badge"
+                style="margin-top: 20px; padding: 10px; text-align: center; border-radius: 20px; background: #eee; font-weight: bold;">
+                Status: Unknown
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/tracker.js"></script>
+</body>
+
+</html>

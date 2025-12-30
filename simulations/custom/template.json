@@ -1,0 +1,67 @@
+{
+    "title": "Solar City Manager",
+    "description": "Balance budget and carbon emissions by building renewable energy sources.",
+    "grid": {
+        "width": 8,
+        "height": 6,
+        "background_color": "#e8f5e9"
+    },
+    "global_resources": {
+        "money": 1000,
+        "energy": 0,
+        "co2": 50
+    },
+    "entities": [
+        {
+            "id": "solar_panel",
+            "name": "Solar Panel",
+            "icon": "☀️",
+            "description": "Photovoltaic cells convert sunlight directly into electricity. Zero emissions!",
+            "cost": {
+                "money": 150
+            },
+            "effects": {
+                "energy": 5,
+                "co2": -0.5
+            }
+        },
+        {
+            "id": "wind_turbine",
+            "name": "Wind Turbine",
+            "icon": "💨",
+            "description": "Harnesses wind kinetic energy. Great for off-shore or windy plains.",
+            "cost": {
+                "money": 400
+            },
+            "effects": {
+                "energy": 12,
+                "co2": -2
+            }
+        },
+        {
+            "id": "tree",
+            "name": "Tree",
+            "icon": "🌲",
+            "description": "Trees act as carbon sinks, absorbing CO2 from the atmosphere.",
+            "cost": {
+                "money": 50
+            },
+            "effects": {
+                "co2": -5
+            }
+        },
+        {
+            "id": "factory",
+            "name": "Old Factory",
+            "icon": "🏭",
+            "description": "Generates profit but releases heavy greenhouse gases.",
+            "cost": {
+                "money": 0
+            },
+            "effects": {
+                "money": 10,
+                "co2": 5
+            }
+        }
+    ]
+}

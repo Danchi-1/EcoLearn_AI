@@ -64,7 +64,7 @@ body {
 }
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .eco-loader {
@@ -110,10 +110,12 @@ body {
         transform: rotate(0deg) scale(1);
         opacity: 1;
     }
+
     50% {
         transform: rotate(180deg) scale(1.2);
         opacity: 0.8;
     }
+
     100% {
         transform: rotate(360deg) scale(1);
         opacity: 1;
@@ -128,9 +130,12 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -182,6 +187,7 @@ body {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -320,7 +326,7 @@ body {
 }
 
 .space-up-sp {
-    margin-top: 70px;
+    margin-top: 100px;
 }
 
 .btn-large {
@@ -644,197 +650,261 @@ body {
 
 /* Visual Animations CSS */
 .hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .floating-particles {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #22c55e;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: float 20s infinite linear;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 20s infinite linear;
 }
 
-.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
-.particle:nth-child(2) { left: 20%; animation-delay: 5s; animation-duration: 20s; }
-.particle:nth-child(3) { left: 30%; animation-delay: 10s; animation-duration: 30s; }
-.particle:nth-child(4) { left: 40%; animation-delay: 15s; animation-duration: 18s; }
-.particle:nth-child(5) { left: 50%; animation-delay: 20s; animation-duration: 22s; }
+.particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 25s;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 5s;
+    animation-duration: 20s;
+}
+
+.particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 10s;
+    animation-duration: 30s;
+}
+
+.particle:nth-child(4) {
+    left: 40%;
+    animation-delay: 15s;
+    animation-duration: 18s;
+}
+
+.particle:nth-child(5) {
+    left: 50%;
+    animation-delay: 20s;
+    animation-duration: 22s;
+}
 
 @keyframes float {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
-  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 .hero-visual {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
 
 .eco-sphere {
-  width: 400px;
-  height: 400px;
-  position: relative;
+    width: 400px;
+    height: 400px;
+    position: relative;
 }
 
 .sphere-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .earth-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 2rem;
-  animation: earthPulse 4s ease-in-out infinite;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    animation: earthPulse 4s ease-in-out infinite;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes earthPulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-  }
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .orbit {
-  position: absolute;
-  border: 2px solid rgba(34, 197, 94, 0.2);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    border: 2px solid rgba(34, 197, 94, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.orbit-1 { width: 150px; height: 150px; animation: orbit 8s linear infinite; }
-.orbit-2 { width: 220px; height: 220px; animation: orbit 12s linear infinite reverse; }
-.orbit-3 { width: 300px; height: 300px; animation: orbit 16s linear infinite; }
+.orbit-1 {
+    width: 150px;
+    height: 150px;
+    animation: orbit 8s linear infinite;
+}
+
+.orbit-2 {
+    width: 220px;
+    height: 220px;
+    animation: orbit 12s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 300px;
+    height: 300px;
+    animation: orbit 16s linear infinite;
+}
 
 @keyframes orbit {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .planet {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 1rem;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
 }
 
 .planet.solar {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
-  animation: planetCounter 8s linear infinite;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+    animation: planetCounter 8s linear infinite;
 }
 
 .planet.wind {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-  animation: planetCounter 12s linear infinite reverse;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    animation: planetCounter 12s linear infinite reverse;
 }
 
 .planet.hydro {
-  background: linear-gradient(135deg, #06b6d4, #0891b2);
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
-  animation: planetCounter 16s linear infinite;
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+    animation: planetCounter 16s linear infinite;
 }
 
 @keyframes planetCounter {
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(-360deg); }
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(-360deg);
+    }
 }
 
 /* === DASHBOARD PAGE === */
 .dashboard-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .dashboard-header {
-  background: var(--primary-color);
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dashboard-main {
-  padding: 2rem;
-  flex: 1;
+    padding: 2rem;
+    flex: 1;
 }
 
 .dashboard-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
 }
 
 .dashboard-card h2 {
-  margin-bottom: 1rem;
-  color: var(--dark-color);
+    margin-bottom: 1rem;
+    color: var(--dark-color);
 }
 
 .logout-btn {
-  background: var(--accent-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  color: white;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
+    background: var(--accent-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .logout-btn:hover {
-  background: #d97706;
+    background: #d97706;
 }

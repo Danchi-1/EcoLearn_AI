@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Simulation Builder</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            /* Clear navbar */
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        .chat-header {
+            background: #2ecc71;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-history {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            line-height: 1.5;
+        }
+
+        .message.ai {
+            align-self: flex-start;
+            background: #e8f5e9;
+            border-bottom-left-radius: 2px;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: #2ecc71;
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-area {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .chat-btn {
+            padding: 12px 24px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .chat-btn:hover {
+            background: #27ae60;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            width: 20px;
+            animation: dot-pulse 1.5s infinite linear;
+        }
+
+        @keyframes dot-pulse {
+            0% {
+                content: ".";
+            }
+
+            33% {
+                content: "..";
+            }
+
+            66% {
+                content: "...";
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-magic"></i>
+                <span>EcoBuilder AI</span>
+            </div>
+            <a href="/hub" class="btn btn-outline" style="margin-left: auto;">Back to Hub</a>
+        </div>
+    </nav>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2><i class="fas fa-robot"></i> Simulation Architect</h2>
+            <p>Describe your simulation idea, and I'll build it instantly.</p>
+        </div>
+
+        <div class="chat-history" id="chat-history">
+            <div class="message ai">
+                Hello! I am the EcoBuilder. What kind of simulation would you like to create today? <br><br>
+                <em>Try: "I want a game about managing a coral reef" or "Create a Mars colonization sim."</em>
+            </div>
+        </div>
+
+        <div class="chat-input-area" style="flex-direction: column;">
+            <div style="display: flex; gap: 10px;">
+                <input type="text" class="chat-input" id="user-input" placeholder="Describe your simulation...">
+                <button class="chat-btn" id="send-btn"><i class="fas fa-paper-plane"></i> Send</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #666;">
+                <input type="checkbox" id="ai-toggle">
+                <label for="ai-toggle">Use Real AI (Requires Server Key)</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/builder.js"></script>
+</body>
+
+</html>

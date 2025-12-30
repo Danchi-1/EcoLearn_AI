@@ -1,4 +1,4 @@
-const Backend_URL = 'https://ecolearnai-production.up.railway.app';
+const Backend_URL = 'http://localhost:5000'; // Relative path for local development
 
 // Wait for full page load (fade out loading screen)
 window.addEventListener('load', () => {
@@ -20,25 +20,32 @@ window.addEventListener('DOMContentLoaded', () => {
         dashboardSection.style.display = 'block';
     }
 
-    // Hide login/signup buttons in navbar if logged in
-    const authBtns = document.getElementById('nav-auth');
-    if (user && authBtns) {
-        authBtns.style.display = 'none';
-    }
-
-    // Show logout button if logged in
+    // Select buttons directly
+    const loginBtn = document.getElementById('login-btn');
+    const signupBtn = document.getElementById('signup-btn');
+    const logoutDiv = document.getElementById('user-logout');
     const logoutBtn = document.getElementById('logout-btn');
-    if (user && logoutBtn) {
-        logoutBtn.style.display = 'inline-block';
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('ecoUser');
-            location.reload(); // Refresh to reset UI
-        });
+
+    if (user) {
+        // User is logged in: Hide Login/Signup, Show Logout
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (signupBtn) signupBtn.style.display = 'none';
+        if (logoutDiv) logoutDiv.style.display = 'inline-block';
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('ecoUser');
+                window.location.href = '/'; // Redirect to home on logout
+            });
+        }
+    } else {
+        // User is logged out: Show Login/Signup, Hide Logout
+        if (loginBtn) loginBtn.style.display = 'inline-block';
+        if (signupBtn) signupBtn.style.display = 'inline-block';
+        if (logoutDiv) logoutDiv.style.display = 'none';
     }
 
     // Handle navigation to login/signup
-    const loginBtn = document.getElementById('login-btn');
-    const signupBtn = document.getElementById('signup-btn');
 
     if (loginBtn) {
         loginBtn.addEventListener('click', () => window.location.href = '/login');

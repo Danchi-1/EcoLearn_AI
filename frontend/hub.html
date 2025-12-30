@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Hub - EcoLearn AI</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hub-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            /* Clear navbar (70px) + spacing */
+            padding: 20px;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .sim-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+        }
+
+        .sim-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sim-img-fallback {
+            height: 150px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #adb5bd;
+        }
+
+        .sim-content {
+            padding: 20px;
+        }
+
+        .sim-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .sim-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .sim-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-official {
+            background: #e1f5fe;
+            color: #0288d1;
+        }
+
+        .badge-custom {
+            background: #e8f5e9;
+            color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoLearn AI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                <li><a class="nav-link active" href="/hub">Simulations</a></li>
+                <li><a class="nav-link" href="/builder">AI Builder</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hub-container">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h2>Simulation Hub</h2>
+                <p>Explore official or AI-generated worlds.</p>
+            </div>
+            <a href="/builder" class="btn btn-primary"><i class="fas fa-plus"></i> Create New</a>
+        </div>
+
+        <div class="hub-grid" id="sim-grid">
+            <!-- Official Cards -->
+            <div class="sim-card">
+                <div class="sim-img-fallback"><i class="fas fa-sun"></i></div>
+                <div class="sim-content">
+                    <h3 class="sim-title">Solar City Manager</h3>
+                    <p class="sim-desc">Manage energy and budget for a growing eco-metropolis.</p>
+                    <div class="sim-meta">
+                        <span class="badge badge-official">Official</span>
+                        <a href="/simulation" class="btn btn-outline btn-sm">Play Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Injected User Cards here -->
+        </div>
+    </div>
+
+    <script src="/js/hub.js"></script>
+</body>
+
+</html>

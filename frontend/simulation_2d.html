@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLearn 2D Engine</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            overflow: hidden;
+            /* Canvas takes over */
+            background: #2c3e50;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background: #000;
+            cursor: crosshair;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            pointer-events: none;
+            /* Let clicks pass to canvas */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .hud-panel {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            pointer-events: auto;
+            /* Re-enable clicks */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .resources {
+            display: flex;
+            gap: 15px;
+            font-weight: bold;
+        }
+
+        .toolbar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 12px;
+            pointer-events: auto;
+        }
+
+        .tool-btn {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.1s;
+        }
+
+        .tool-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .tool-btn.active {
+            border-color: #2ecc71;
+            background: #e8f5e9;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="ui-overlay">
+            <div class="top-bar">
+                <div class="hud-panel">
+                    <h2 id="sim-title" style="margin: 0 0 5px 0;">Loading...</h2>
+                    <div class="resources" id="resources-display">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <a href="/hub" class="btn btn-outline back-btn" style="background: white;">Back to Hub</a>
+            </div>
+
+            <div class="toolbar" id="toolbar">
+                <!-- Build Buttons -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Serve the 2D Engine Script -->
+    <script src="/js/engine_2d.js"></script>
+</body>
+
+</html>
