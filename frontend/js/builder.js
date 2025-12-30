@@ -66,7 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     sendBtn.addEventListener('click', handleSend);
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSend();
+    userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+            e.preventDefault(); // Prevent newline
+            handleSend();
+        }
     });
 });

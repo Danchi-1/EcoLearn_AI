@@ -136,9 +136,12 @@
         </div>
 
         <div class="chat-input-area" style="flex-direction: column;">
-            <div style="display: flex; gap: 10px;">
-                <input type="text" class="chat-input" id="user-input" placeholder="Describe your simulation...">
-                <button class="chat-btn" id="send-btn"><i class="fas fa-paper-plane"></i> Send</button>
+            <div style="display: flex; gap: 10px; align-items: flex-end;">
+                <textarea class="chat-input" id="user-input"
+                    placeholder="Describe your simulation... (Paste your species traits here)"
+                    style="resize: none; height: 60px; font-family: inherit;"></textarea>
+                <button class="chat-btn" id="send-btn" style="height: 60px;"><i class="fas fa-paper-plane"></i>
+                    Send</button>
             </div>
             <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #666;">
                 <input type="checkbox" id="ai-toggle">
