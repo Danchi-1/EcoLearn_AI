@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Auth Check
+    if (!localStorage.getItem('ecoUser')) {
+        window.location.href = '/login';
+        return;
+    }
+
     const ctx = document.getElementById('impactChart').getContext('2d');
     const form = document.getElementById('tracker-form');
     const totalEl = document.getElementById('total-co2');

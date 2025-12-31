@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Auth Check
+    const user = localStorage.getItem('ecoUser');
+    if (!user) {
+        window.location.href = '/login';
+        return;
+    }
+
     // Game State
     let config = null;
     let resources = {};

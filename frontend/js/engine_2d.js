@@ -18,6 +18,12 @@ let offsetY = 0;
 
 // Init
 function init() {
+    // Auth Check
+    if (!localStorage.getItem('ecoUser')) {
+        window.location.href = '/login';
+        return;
+    }
+
     resize();
     window.addEventListener('resize', resize);
 

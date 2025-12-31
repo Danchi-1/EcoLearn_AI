@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Auth Check
+    if (!localStorage.getItem('ecoUser')) {
+        window.location.href = '/login';
+        return;
+    }
+
     const chatHistory = document.getElementById('chat-history');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
