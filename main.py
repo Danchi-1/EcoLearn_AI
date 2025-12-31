@@ -189,6 +189,9 @@ def simulation_chat():
     data = request.json
     message = data.get('message')
     config = data.get('config')
+    persona = data.get('persona') # "Professor"
+    resources = data.get('current_resources')
+    topic = data.get('topic')
     
     if not message or not config:
         return jsonify({"error": "Missing message or config"}), 400
@@ -197,8 +200,76 @@ def simulation_chat():
     # For demo, we might mock it or expect it in env
     api_key = os.environ.get("LLM_API_KEY", "MOCK") 
     
-    reply = chat_with_simulation(message, config, api_key)
+    reply = chat_with_simulation(message, config, api_key, persona, resources, topic)
     return jsonify({"reply": reply})
+
+# === SAVE/LOAD ENDPOINTS ===
+from database.db_config import get_db_connection
+
+@app.route('/api/save', methods=['POST'])
+def save_simulation():
+    data = request.json
+    email = data.get('email')
+    title = data.get('title')
+    config = data.get('config') # JSON object
+    state = data.get('state')   # JSON object
+    
+    if not email or not config or not state:
+        return jsonify({"error": "Missing data"}), 400
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Serialize if they are dicts (Flask request.json automatically parses them)
+        import json
+        config_str = json.dumps(config)
+        state_str = json.dumps(state)
+        
+        cursor.execute('''
+            INSERT INTO simulation_saves (user_email, title, config_json, state_json)
+            VALUES (?, ?, ?, ?)
+        ''', (email, title, config_str, state_str))
+        
+        conn.commit()
+        conn.close()
+        return jsonify({"message": "Game saved successfully!"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/saves/<email>', methods=['GET'])
+def list_saves(email):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, title, saved_at FROM simulation_saves WHERE user_email = ? ORDER BY saved_at DESC', (email,))
+        rows = cursor.fetchall()
+        conn.close()
+        
+        saves = [{"id": r["id"], "title": r["title"], "date": r["saved_at"]} for r in rows]
+        return jsonify(saves)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/load/<int:save_id>', methods=['GET'])
+def load_save(save_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT config_json, state_json FROM simulation_saves WHERE id = ?', (save_id,))
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            import json
+            return jsonify({
+                "config": json.loads(row["config_json"]),
+                "state": json.loads(row["state_json"])
+            })
+        else:
+            return jsonify({"error": "Save not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

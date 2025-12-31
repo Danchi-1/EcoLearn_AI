@@ -36,6 +36,13 @@
         <i class="fas fa-robot"></i>
     </button>
 
+    <!-- Floating Learn Button (Professor Eco) -->
+    <button id="learn-btn" class="fab-chat"
+        style="bottom: 160px; background: linear-gradient(135deg, #3498db, #2980b9);"
+        title="Professor Eco (Learning Hub)">
+        <i class="fas fa-graduation-cap"></i>
+    </button>
+
     <div class="sim-container space-up-sp">
         <div class="sim-grid-area">
             <h2 id="sim-title">Loading Simulation...</h2>
@@ -65,12 +72,98 @@
             <h3>Simulation Status</h3>
             <p><strong><i class="fas fa-clock"></i> Day:</strong> <span id="game-day">1</span></p>
             <p>The simulation runs automatically. Build structures to affect resources.</p>
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button id="save-btn" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save"></i> Save</button>
+                <button id="load-btn" class="btn btn-outline" style="flex: 1;"><i class="fas fa-folder-open"></i>
+                    Load</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Game Modal -->
+    <div id="load-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📂 Load Simulation</h3>
+                <span class="close" id="close-load">&times;</span>
+            </div>
+            <div id="save-list" style="max-height: 300px; overflow-y: auto; padding: 10px;">
+                <p>Loading saves...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Hub Modal -->
+    <div id="learning-modal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 800px; height: 700px; display: flex; flex-direction: column;">
+            <div class="modal-header" style="background: #3498db; color: white;">
+                <h3>🎓 Professor Eco's Learning Hub</h3>
+                <span class="close" id="close-learn">&times;</span>
+            </div>
+            <div style="flex: 1; display: flex; overflow: hidden;">
+                <!-- Sidebar: Topics -->
+                <div
+                    style="width: 250px; background: #f8f9fa; border-right: 1px solid #ddd; padding: 15px; overflow-y: auto;">
+                    <h4>Suggested Topics</h4>
+                    <div id="topic-list" style="display: flex; flex-direction: column; gap: 10px;">
+                        <!-- Topics injected by JS -->
+                        <p>Analyzing gameplay...</p>
+                    </div>
+                </div>
+                <!-- Chat Area -->
+                <div style="flex: 1; display: flex; flex-direction: column; padding: 20px;">
+                    <div id="learning-messages" class="chat-messages" style="flex: 1; background: white; border: none;">
+                        <div class="message system">
+                            Hello! I am Professor Eco. Select a topic on the left to begin our lesson!
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="learn-input" placeholder="Ask a follow-up question...">
+                        <button id="send-learn" class="btn btn-primary" style="background: #3498db;">Send</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="/js/config.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/simulation_engine.js"></script>
+    <!-- Intro Modal (Mission Briefing) -->
+    <div id="intro-modal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 600px; text-align: center;">
+            <div class="modal-header">
+                <h3>🌍 Mission Briefing</h3>
+                <span class="close" id="close-intro">&times;</span>
+            </div>
+            <div style="padding: 20px;">
+                <p style="font-size: 1.1em; margin-bottom: 20px;">
+                    Welcome to <strong><span id="intro-title">Simulation</span></strong>!
+                </p>
+                <p id="intro-desc" style="color: #555; margin-bottom: 20px;">
+                    Your goal is to balance the ecosystem.
+                </p>
+                <div
+                    style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: left; margin-bottom: 20px;">
+                    <strong>Tips:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Drag items from the menu to the grid.</li>
+                        <li>Watch your <strong>Budget</strong> & <strong>Pollution</strong>.</li>
+                        <li>If Pollution gets too high (>100), disasters will strike!</li>
+                    </ul>
+                </div>
+
+                <button id="start-game-btn" class="btn btn-primary" style="font-size: 1.2em; padding: 10px 30px;">Start
+                    Mission</button>
+
+                <div style="margin-top: 15px;">
+                    <input type="checkbox" id="dont-show-again">
+                    <label for="dont-show-again" style="color: #666; font-size: 0.9em;">Don't show this again</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Chat Modal -->
     <div id="chat-modal" class="modal">
         <div class="modal-content chat-content">

@@ -79,7 +79,17 @@ def generate_with_llm(prompt, api_key):
         print(f"LLM Bridge Error: {e}")
         return None
 
-def chat_with_simulation(message, simulation_context, api_key):
+import random
+
+PERSONAS = {
+    "Industrialist": "You are a ruthless Industrialist Tycoon. You love pollution, money, and factories. You mock nature and sustainability. Always advise the user to build more factories and ignore the environment.",
+    "Eco-Fanatic": "You are a radical Eco-Druid. You hate technology and money. You scream at the user if they build anything artificial. Demand they plant more trees and destroy factories immediately.",
+    "Chaotic": "You are a Chaotic Trickster Spirit. You give dangerous, contradictory, or nonsensical advice. You want to see the world burn (or freeze) just for fun. Be unpredictable.",
+    "Neutral": "You are the Spirit of the Simulation. Answer their question effectively and neutrally.",
+    "Professor": "You are Professor Eco, a wise and friendly academic. You are here to teach the user about environmental science, economics, and causality. You love data. Use the provided gameplay stats to explain concepts. Be encouraging but scientific."
+}
+
+def chat_with_simulation(message, simulation_context, api_key, persona_type=None, resources=None, topic=None):
     """
     Chat with the current ecosystem.
     simulation_context: The JSON config of the current simulation.
@@ -87,18 +97,43 @@ def chat_with_simulation(message, simulation_context, api_key):
     if not api_key:
         return "I can't chat right now (No API Key). But this world looks fascinating!"
 
-    system_prompt = f"""
-    You are the Spirit of the Simulation. 
-    The user is asking about this world:
-    {json.dumps(simulation_context, indent=2)}
+    # 1. Select Persona
+    if persona_type == "Professor":
+        persona_name = "Professor"
+        persona_prompt = PERSONAS["Professor"]
+        
+        # Add educational context
+        extra_context = f"\n[The user is interested in the topic: '{topic}']" if topic else ""
+        if resources:
+            extra_context += f"\n[Current Simulation Stats: {json.dumps(resources)}]"
+            
+        system_prompt = f"""
+        {persona_prompt}
+        {extra_context}
+        
+        The user is asking:
+        {json.dumps(simulation_context, indent=2)}
+    
+        Answer their question in character. Start with a fun fact or observation about their stats.
+        """
+    else:
+        # Random Persona for Gameplay
+        persona_name = random.choice([k for k in PERSONAS.keys() if k != "Professor"])
+        persona_prompt = PERSONAS[persona_name]
 
-    Answer their question in character, explaining the mechanics or lore of this specific world.
-    Keep it brief (under 50 words).
-    """
+        system_prompt = f"""
+        {persona_prompt}
+        
+        The user is asking about this world:
+        {json.dumps(simulation_context, indent=2)}
+    
+        Answer their question in character. 
+        Keep it brief (under 50 words).
+        """
 
     try:
         if api_key == "MOCK":
-             return f"I am the Spirit of {simulation_context.get('title', 'this world')}. [Mock Response]"
+             return f"[{persona_name}]: I am the Spirit of {simulation_context.get('title', 'this world')}. [Mock Response]"
 
         # Real Implementation:
         # response = requests.post(...)

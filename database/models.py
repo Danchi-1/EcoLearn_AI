@@ -24,6 +24,19 @@ def init_db():
             expiry TIMESTAMP
         )
     ''')
+
+    # Create simulation_saves table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS simulation_saves (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_email TEXT,
+            title TEXT,
+            config_json TEXT, -- The initial configuration
+            state_json TEXT, -- The current grid/resources state
+            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(user_email) REFERENCES users(email)
+        )
+    ''')
     
     conn.commit()
     conn.close()
