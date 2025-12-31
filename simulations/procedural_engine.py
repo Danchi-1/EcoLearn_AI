@@ -282,6 +282,19 @@ def generate_procedural_config(prompt):
             "cost": { c_name: cost_val },
             "effects": { "score": effect_val }
         }
+        
+        # Add Trade-offs (Upkeep / Pollution)
+        # 1. Maintenance Cost (50% chance for high-cost items)
+        if cost_val > 200 and random.random() > 0.5:
+            new_ent["effects"][c_name] = -random.randint(5, 15) # Drains currency!
+            new_ent["description"] += " Needs upkeep."
+            
+        # 2. Pollution (30% chance for tech/industry items)
+        if "tech" in ent["tags"] or "industry" in ent["tags"]:
+             if random.random() > 0.7:
+                 new_ent["effects"]["pollution"] = random.randint(2, 8)
+                 new_ent["description"] += " Pollutes."
+                 
         final_entities_config.append(new_ent)
         
     # 5. Title
@@ -300,7 +313,8 @@ def generate_procedural_config(prompt):
         },
         "global_resources": {
             c_name: 1000,
-            "score": 0
+            "score": 0,
+            "pollution": 0
         },
         "entities": final_entities_config
     }

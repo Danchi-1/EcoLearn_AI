@@ -1,4 +1,4 @@
-```python
+import os
 from flask import Flask, send_from_directory, request, jsonify
 from user_system.auth import register_user, validate_user, get_user_by_email, create_reset_token, perform_password_reset
 from ai_module.analytics import LearningAnalytics
@@ -183,9 +183,6 @@ def forgot_password_page():
     return send_from_directory('frontend', 'forgot_password.html')
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
 # Chatbot Endpoint
 @app.route('/api/simulation/chat', methods=['POST'])
 def simulation_chat():
@@ -202,3 +199,6 @@ def simulation_chat():
     
     reply = chat_with_simulation(message, config, api_key)
     return jsonify({"reply": reply})
+
+if __name__ == '__main__':
+    app.run(debug=True)

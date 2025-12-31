@@ -224,7 +224,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+        // Crisis Check (Every 5 days)
+        if (gameDay % 5 === 0) {
+            checkCrisis();
+        }
         updateResourceUI();
+    }
+
+    function checkCrisis() {
+        // Pollution Crisis
+        if (resources['pollution'] > 100) {
+            triggerCrisis("Toxic Smog Alert! Pollution is too high!");
+            resources['score'] -= 50; // Punishment
+        }
+
+        // Bankruptcy Crisis
+        // Check for any currency < 0
+        for (const [key, val] of Object.entries(resources)) {
+            if (val < 0 && key !== 'score' && key !== 'pollution') {
+                triggerCrisis(`Bankruptcy Warning! You are out of ${key}!`);
+                resources['score'] -= 10;
+            }
+        }
+    }
+
+    function triggerCrisis(msg) {
+        // Visual Feedback
+        const originalBg = document.body.style.backgroundColor;
+        document.body.style.backgroundColor = '#ffcccc'; // Flash Red
+        setTimeout(() => {
+            document.body.style.backgroundColor = originalBg;
+        }, 500);
+
+        // Alert text (maybe replace title temporarily)
+        const oldTitle = titleEl.textContent;
+        titleEl.textContent = "⚠️ " + msg;
+        titleEl.style.color = "red";
+
+        setTimeout(() => {
+            titleEl.textContent = oldTitle;
+            titleEl.style.color = "black";
+        }, 3000);
     }
 });
 
@@ -240,11 +280,11 @@ if (chatBtn && chatModal) {
     chatBtn.addEventListener('click', () => {
         chatModal.style.display = 'flex';
     });
-    
+
     closeChat.addEventListener('click', () => {
         chatModal.style.display = 'none';
     });
-    
+
     window.addEventListener('click', (e) => {
         if (e.target === chatModal) {
             chatModal.style.display = 'none';
@@ -279,10 +319,10 @@ async function sendMessage() {
         });
 
         const data = await res.json();
-        
+
         // Remove loading
         document.getElementById(loadingId).remove();
-        
+
         // Add AI Response
         addMessage(data.reply || "I am silent.", 'ai');
 
