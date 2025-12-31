@@ -79,6 +79,7 @@
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
 /* === MOBILE RESPONSIVENESS === */
 @media (max-width: 768px) {
     .sim-container {
@@ -87,25 +88,25 @@
     }
 
     .sim-grid-area {
-        min-width: 0; /* Allow shrinking */
+        min-width: 0;
+        /* Allow shrinking */
         width: 100%;
-        overflow-x: auto; /* Scroll if grid too big */
+        overflow-x: auto;
+        /* Scroll if grid too big */
     }
 
     .sim-controls {
         min-width: 0;
         width: 100%;
     }
-    
+
     .resources-display {
         flex-wrap: wrap;
         font-size: 0.9em;
     }
-    
-    #game-grid {
-        /* Ensure minimum touch target size */
-    }
-    
+
+
+
     .grid-cell {
         min-width: 40px;
         min-height: 40px;
@@ -148,7 +149,8 @@
 .message.user {
     background: #dcf8c6;
     color: #333;
-    align-self: flex-end; /* This won't work without flex parent */
+    align-self: flex-end;
+    /* This won't work without flex parent */
     margin-left: auto;
 }
 
@@ -177,7 +179,8 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     font-size: 24px;
     cursor: pointer;
-    z-index: 2000;
+    z-index: 9999;
+    /* Ensure on top of everything */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     justify-content: center;
@@ -194,10 +197,13 @@
 
 @media (max-width: 768px) {
     .fab-chat {
-        bottom: 20px;
+        bottom: 90px;
+        /* Moved up to avoid mobile nav bars */
         right: 20px;
         width: 50px;
         height: 50px;
         font-size: 20px;
+        z-index: 9999;
+        /* Ensure on top of everything */
     }
 }

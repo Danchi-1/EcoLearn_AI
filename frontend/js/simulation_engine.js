@@ -128,9 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Hover for Description
-            btn.addEventListener('mouseenter', () => {
+            const showInfo = () => {
                 if (infoEl) infoEl.textContent = entity.description || "No description available.";
-            });
+            };
+
+            btn.addEventListener('mouseenter', showInfo);
+            btn.addEventListener('touchstart', showInfo); // Mobile Support
+            btn.addEventListener('click', showInfo); // Universal Support
+
             btn.addEventListener('mouseleave', () => {
                 if (infoEl) infoEl.textContent = "Hover over an item to see details.";
             });

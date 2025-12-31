@@ -71,24 +71,24 @@
     <script src="/js/config.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/simulation_engine.js"></script>
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content chat-content">
+            <div class="modal-header">
+                <h3>Talk to the Spirit</h3>
+                <span class="close" id="close-chat">&times;</span>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="message system">
+                    Ask me anything about this world!
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Why are there so many rockets?">
+                <button id="send-chat" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
-<!-- Chat Modal -->
-<div id="chat-modal" class="modal">
-    <div class="modal-content chat-content">
-        <div class="modal-header">
-            <h3>Talk to the Spirit</h3>
-            <span class="close" id="close-chat">&times;</span>
-        </div>
-        <div id="chat-messages" class="chat-messages">
-            <div class="message system">
-                Ask me anything about this world!
-            </div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Why are there so many rockets?">
-            <button id="send-chat" class="btn btn-primary">Send</button>
-        </div>
-    </div>
-</div>
