@@ -16,11 +16,21 @@ def generate_simulation_config(prompt, use_llm=False):
         if api_key:
             llm_result = generate_with_llm(prompt, api_key)
             if llm_result:
-                return llm_result
+                # llm_result is now {'reasoning': str, 'config': dict}
+                # If config is None (e.g. mock mode), we fall back to procedural
+                # but we could potentially attach the reasoning to the procedural result?
+                
+                config = llm_result.get('config')
+                reasoning = llm_result.get('reasoning')
+                
+                if config:
+                    config['ai_reasoning'] = reasoning # Store reasoning in the config
+                    return config
+                
+                # If config is None (Mock), fall through to procedural
+                # We could print reasoning for debugging
+                print(f"AI Reasoning (Mock): {reasoning}")
             else:
-                # If LLM requested but failed, we could log it.
-                # For now, fallback silently or maybe return error? 
-                # Falling back to procedural is safer for user experience.
                 pass 
 
     # 2. Procedural Fallback (Robust, Local)

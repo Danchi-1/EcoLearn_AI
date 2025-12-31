@@ -13,13 +13,28 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
+            <a href="/dashboard" class="nav-logo" style="text-decoration: none;">
                 <i class="fas fa-leaf"></i>
                 <span>EcoLearn AI</span>
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <a href="/hub" class="btn btn-outline" style="margin-left: auto;">Back to Hub</a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/hub" class="nav-link">Back to Hub</a></li>
+            </ul>
         </div>
     </nav>
+
+    <!-- Floating AI Chat Button -->
+    <button id="ai-chat-btn" class="fab-chat" title="Talk to the Spirit">
+        <i class="fas fa-robot"></i>
+    </button>
 
     <div class="sim-container space-up-sp">
         <div class="sim-grid-area">
@@ -54,7 +69,26 @@
     </div>
 
     <script src="/js/config.js"></script>
+    <script src="/js/main.js"></script>
     <script src="/js/simulation_engine.js"></script>
 </body>
 
 </html>
+<!-- Chat Modal -->
+<div id="chat-modal" class="modal">
+    <div class="modal-content chat-content">
+        <div class="modal-header">
+            <h3>Talk to the Spirit</h3>
+            <span class="close" id="close-chat">&times;</span>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div class="message system">
+                Ask me anything about this world!
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Why are there so many rockets?">
+            <button id="send-chat" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>

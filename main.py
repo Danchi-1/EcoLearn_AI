@@ -1,10 +1,11 @@
-from flask import Flask, send_from_directory
-from flask import Flask, request, jsonify
+```python
+from flask import Flask, send_from_directory, request, jsonify
 from user_system.auth import register_user, validate_user, get_user_by_email, create_reset_token, perform_password_reset
 from ai_module.analytics import LearningAnalytics
-from ai_module.analytics import LearningAnalytics
 from database.models import init_db
+from simulations.procedural_engine import generate_procedural_config
 from simulations.ai_generator import generate_simulation_config
+from simulations.llm_bridge import chat_with_simulation
 from flask_cors import CORS
 
 # Initialize Database
@@ -184,3 +185,20 @@ def forgot_password_page():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# Chatbot Endpoint
+@app.route('/api/simulation/chat', methods=['POST'])
+def simulation_chat():
+    data = request.json
+    message = data.get('message')
+    config = data.get('config')
+    
+    if not message or not config:
+        return jsonify({"error": "Missing message or config"}), 400
+        
+    # In a real app, we'd get the key from env
+    # For demo, we might mock it or expect it in env
+    api_key = os.environ.get("LLM_API_KEY", "MOCK") 
+    
+    reply = chat_with_simulation(message, config, api_key)
+    return jsonify({"reply": reply})

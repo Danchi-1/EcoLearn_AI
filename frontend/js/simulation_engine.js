@@ -227,3 +227,78 @@ document.addEventListener('DOMContentLoaded', () => {
         updateResourceUI();
     }
 });
+
+// === CHAT LOGIC ===
+const chatModal = document.getElementById('chat-modal');
+const chatBtn = document.getElementById('ai-chat-btn');
+const closeChat = document.getElementById('close-chat');
+const sendChat = document.getElementById('send-chat');
+const chatInput = document.getElementById('chat-input');
+const chatMessages = document.getElementById('chat-messages');
+
+if (chatBtn && chatModal) {
+    chatBtn.addEventListener('click', () => {
+        chatModal.style.display = 'flex';
+    });
+    
+    closeChat.addEventListener('click', () => {
+        chatModal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === chatModal) {
+            chatModal.style.display = 'none';
+        }
+    });
+
+    sendChat.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+}
+
+async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // Add User Message
+    addMessage(text, 'user');
+    chatInput.value = '';
+
+    // Show loading
+    const loadingId = addMessage('Thinking...', 'ai');
+
+    try {
+        const res = await fetch(`${API_BASE_URL}/api/simulation/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: text,
+                config: config // 'config' is global in this file
+            })
+        });
+
+        const data = await res.json();
+        
+        // Remove loading
+        document.getElementById(loadingId).remove();
+        
+        // Add AI Response
+        addMessage(data.reply || "I am silent.", 'ai');
+
+    } catch (err) {
+        console.error(err);
+        document.getElementById(loadingId).textContent = "Error: " + err.message;
+    }
+}
+
+function addMessage(text, type) {
+    const div = document.createElement('div');
+    const id = 'msg-' + Date.now();
+    div.id = id;
+    div.className = `message ${type}`;
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return id;
+}
