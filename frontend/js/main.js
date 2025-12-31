@@ -1,4 +1,5 @@
-const Backend_URL = 'http://localhost:5000'; // Relative path for local development
+// Backend URL is now loaded from config.js (API_BASE_URL)
+// const Backend_URL = 'http://localhost:5000'; 
 
 // Wait for full page load (fade out loading screen)
 window.addEventListener('load', () => {
@@ -85,7 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const res = await fetch(`${Backend_URL}/signup`, {
+            const res = await fetch(`${API_BASE_URL}/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password })
@@ -119,7 +120,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const res = await fetch(`${Backend_URL}/login`, {
+            const res = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })

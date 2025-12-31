@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aiText.textContent = "Analyzing your footprint...";
 
         try {
-            const response = await fetch('/api/tracker/analyze', {
+            const response = await fetch(`${API_BASE_URL}/api/tracker/analyze`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

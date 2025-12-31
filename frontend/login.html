@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -109,6 +110,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="auth-wrapper">
     <div class="auth-card">
@@ -148,6 +150,7 @@
     </div>
   </div>
 
+  <script src="/js/config.js"></script>
   <script>
     // Load remembered email
     document.addEventListener('DOMContentLoaded', () => {
@@ -173,7 +176,7 @@
       const remember = document.getElementById('remember-me').checked;
       const errorBox = document.getElementById('login-error');
 
-      const res = await fetch('/login', {
+      const res = await fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -195,4 +198,5 @@
     });
   </script>
 </body>
+
 </html>

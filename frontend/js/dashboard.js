@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    fetch(`/api/user/${userEmail}`)
+    fetch(`${API_BASE_URL}/api/user/${userEmail}`)
         .then(res => res.json())
         .then(data => {
             if (data.error) {

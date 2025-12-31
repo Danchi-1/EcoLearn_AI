@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatHistory.appendChild(loadingDiv);
 
         try {
-            const response = await fetch('/api/builder/generate', {
+            const response = await fetch(`${API_BASE_URL}/api/builder/generate`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt: text, use_llm: useAI })

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +10,7 @@
     a {
       text-decoration: none;
     }
-    
+
     .backArrow {
       font-size: 3rem;
       color: green;
@@ -88,6 +89,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="auth-wrapper">
     <div class="auth-card">
@@ -127,6 +129,7 @@
       </div>
     </div>
   </div>
+  <script src="/js/config.js"></script>
   <script>
     document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -143,7 +146,7 @@
         return;
       }
 
-      const res = await fetch('/signup', {
+      const res = await fetch(`${API_BASE_URL}/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, role })
@@ -160,4 +163,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             titleEl.textContent = "Error loading local simulation.";
         }
     } else {
-        fetch('/api/simulation/template')
+        fetch(`${API_BASE_URL}/api/simulation/template`)
             .then(res => res.json())
             .then(data => {
                 config = data;
